@@ -5,58 +5,35 @@ const createPerson = (name, age) => {
   };
 };
 
-const getName = (object) => {
-  return object.name;
-};
+const getName = object => object.name;
 
-const getProperty = (property, object) => {
-  return object[property];
-};
+const getProperty = (property, object) => object[property];
 
-const hasProperty = (property, object) => {
-  return object.hasOwnProperty(property);
-};
+const hasProperty = (property, object) => object.hasOwnProperty(property);
 
-const isOver65 = (person) => {
-  // if (person.age > 65) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
-  return person.age > 65 ? true : false;
-};
+const isOver65 = person => person.age > 65;
 
-const getAges = (people) => {
-  let result = people.map(person => person.age);
-  return result; 
-};
+const getAges = people => people.map(person => person.age);
 
-const findByName = (name, people) => {
-  let person = people.find(obj => obj.name === name);
-  return person;
-};
+const findByName = (name, people) => people.find(obj => obj.name === name);
 
-const findHondas = (cars) => {
-  let hondas = cars.filter(obj => obj.manufacturer === 'Honda');
-  return hondas;
-};
+const findHondas = cars => cars.filter(obj => obj.manufacturer === "Honda");
 
-const averageAge = (people) => {
-  let totalAge = 0;
-  for (let i = 0; i < people.length; i+=1) {
-    totalAge += people[i].age;
-  }
+const averageAge = people => {
+  const totalAge = people.reduce((prevAge, currentPerson) => {
+    return prevAge + currentPerson.age;
+  }, 0);
+
   return totalAge / people.length;
 };
 
 const createTalkingPerson = (name, age) => {
-  function introduce(strangersName) {
-    return `Hi ${strangersName}, my name is ${name} and I am ${age}!`;
-  }
   return {
     name: name,
     age: age,
-    introduce: introduce,
+    introduce: strangersName => {
+      return `Hi ${strangersName}, my name is ${name} and I am ${age}!`;
+    }
   };
 };
 
@@ -70,5 +47,5 @@ module.exports = {
   findByName,
   findHondas,
   averageAge,
-  createTalkingPerson,
+  createTalkingPerson
 };

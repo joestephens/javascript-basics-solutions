@@ -1,66 +1,36 @@
-const negate = (a) => {
-  return !a;
+const negate = a => !a;
+
+const both = (a, b) => a && b;
+
+const either = (a, b) => a || b;
+
+const none = (a, b) => !(a || b);
+
+const one = (a, b) => (a || b) && !(a && b);
+
+const truthiness = a => Boolean(a);
+
+const isEqual = (a, b) => a === b;
+
+const isGreaterThan = (a, b) => a > b;
+
+const isLessThanOrEqualTo = (a, b) => a <= b;
+
+const isOdd = a => a % 2 === 1;
+
+const isEven = a => a % 2 === 0;
+
+const isSquare = a => Boolean(Math.sqrt(a) % 1 === 0);
+
+const startsWith = (char, string) => string.charAt(0) === char;
+
+const containsVowels = string => {
+  return string
+    .split("")
+    .some(letter => ["a", "e", "i", "o", "u"].includes(letter.toLowerCase()));
 };
 
-const both = (a, b) => {
-  return a && b;
-};
-
-const either = (a, b) => {
-  return a || b;
-};
-
-const none = (a, b) => {
-  return !(a || b);
-};
-
-const one = (a, b) => {
-  return (a || b) && !(a && b);
-};
-
-const truthiness = (a) => {
-  return !!a && true;
-};
-
-const isEqual = (a, b) => {
-  return (a === b) && true;
-};
-
-const isGreaterThan = (a, b) => {
-  return (a > b) && true;
-};
-
-const isLessThanOrEqualTo = (a, b) => {
-  return (a <= b) && true;
-};
-
-const isOdd = (a) => {
-  return ((a % 2) > 0) && true;
-};
-
-const isEven = (a) => {
-  return ((a % 2) === 0) && true;
-};
-
-const isSquare = (a) => {
-  return !!(Math.sqrt(a) % 1 === 0) && true;
-};
-
-const startsWith = (char, string) => {
-  return (string.charAt(0) === char) && true;
-};
-
-const containsVowels = (string) => {
-  return string.toLowerCase().includes('a') 
-          || string.toLowerCase().includes('e')
-          || string.toLowerCase().includes('i') 
-          || string.toLowerCase().includes('o') 
-          || string.toLowerCase().includes('u');
-};
-
-const isLowerCase = (string) => {
-  return (string === string.toLowerCase());
-};
+const isLowerCase = string => string === string.toLowerCase();
 
 module.exports = {
   negate,
@@ -77,5 +47,5 @@ module.exports = {
   isSquare,
   startsWith,
   containsVowels,
-  isLowerCase,
+  isLowerCase
 };
